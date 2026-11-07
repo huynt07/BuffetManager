@@ -2,6 +2,7 @@
 using BuffetManager.Reports;
 using BuffetManager.Services;
 using Microsoft.Reporting.WinForms;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,7 +92,9 @@ namespace BuffetManager.Forms
 
         new ReportParameter(
             "pHinhThuc",
-            BaoCaoService.TenHinhThuc(hoaDon.HinhThuc))
+            BaoCaoService.TenHinhThuc(hoaDon.HinhThuc)),
+
+        new ReportParameter("pQR", TaoQRBase64("HD" + hoaDon.MaHD))
     });
 
             reportViewer1.RefreshReport();
@@ -153,11 +156,27 @@ namespace BuffetManager.Forms
 
         new ReportParameter(
             "pHinhThuc",
-            BaoCaoService.TenHinhThuc(luot.HinhThuc))
+            BaoCaoService.TenHinhThuc(luot.HinhThuc)),
+
+        new ReportParameter(
+            "pQR", 
+            TaoQRBase64("Ban " + phucVu.TenBan(maLuot) + " - " + chiTiet.Sum(x => x.ThanhTien).ToString("0")))
     });
 
             reportViewer1.RefreshReport();
         }
 
+        private static string TaoQRBase64(string text)
+        {
+            using (var gen = new QRCodeGenerator())
+            using (var data = gen.CreateQrCode(text, QRCodeGenerator.ECCLevel.M))
+            using (var qr = new QRCode(data))
+            using (var bmp = qr.GetGraphic(8))
+            using (var ms = new System.IO.MemoryStream())
+            {
+                bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return Convert.ToBase64String(ms.ToArray());
+            }
+        }
     }
 }

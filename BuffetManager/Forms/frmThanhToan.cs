@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BuffetManager.Helpers;
+using BuffetManager.Models;
+using BuffetManager.Services;
+using QRCoder;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using BuffetManager.Helpers;
-using BuffetManager.Models;
-using BuffetManager.Services;
 
 namespace BuffetManager.Forms
 {
@@ -80,6 +81,8 @@ namespace BuffetManager.Forms
             bool transfer = FormHelper.Value(cboPhuongThuc) == "CHUYENKHOAN";
             nudTienKhachDua.Enabled = !transfer;
             chkDaNhanChuyenKhoan.Visible = transfer;
+            picQR.Visible = transfer;
+            if (transfer) ShowQR("Ban " + luot.MaLuot + " - " + total.ToString("0"));
             lblTienThua.Text = transfer ? "Tiền thừa: 0 đ" : nudTienKhachDua.Value < total ? "Còn thiếu: " + (total - nudTienKhachDua.Value).ToString("N0") + " đ" : "Tiền thừa: " + (nudTienKhachDua.Value - total).ToString("N0") + " đ";
             btnThanhToan.Enabled = !saving && UserSession.CoQuyen("THANH_TOAN");
         }
@@ -115,5 +118,16 @@ namespace BuffetManager.Forms
             }
         }
 
+        private void ShowQR(string text)
+        {
+            using (var gen = new QRCodeGenerator())
+            using (var data = gen.CreateQrCode(text, QRCodeGenerator.ECCLevel.M))
+            using (var qr = new QRCode(data))
+            {
+                var old = picQR.Image;
+                picQR.Image = qr.GetGraphic(8);
+                old?.Dispose();
+            }
+        }
     }
 }
