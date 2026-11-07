@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+**/bin/
+**/obj/
+
+# User settings
+*.user
+*.suo
+*.rsuser
+
+# Build files
+[Dd]ebug/
+[Rr]elease/
+TestResults/
+
+# Database local files
+*.mdf
+*.ldf
+*.bak
+
+# Sensitive files
+.env
+*.pfx

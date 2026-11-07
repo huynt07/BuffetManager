@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{56ECC0A5-06C4-49E9-B6CD-8084668F8BF3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BuffetManager</RootNamespace>
+    <AssemblyName>BuffetManager</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.8, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.8\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\frmBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBan.Designer.cs">
+      <DependentUpon>frmBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChuyenGopBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChuyenGopBan.Designer.cs">
+      <DependentUpon>frmChuyenGopBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCombo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCombo.Designer.cs">
+      <DependentUpon>frmCombo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmComboMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmComboMon.Designer.cs">
+      <DependentUpon>frmComboMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDanhMucMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDanhMucMon.Designer.cs">
+      <DependentUpon>frmDanhMucMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDatBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDatBan.Designer.cs">
+      <DependentUpon>frmDatBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDinhLuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDinhLuong.Designer.cs">
+      <DependentUpon>frmDinhLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGoiBuffet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGoiBuffet.Designer.cs">
+      <DependentUpon>frmGoiBuffet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGoiBuffetMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGoiBuffetMon.Designer.cs">
+      <DependentUpon>frmGoiBuffetMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGoiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGoiMon.Designer.cs">
+      <DependentUpon>frmGoiMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmKhoiTaoAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmKhoiTaoAdmin.Designer.cs">
+      <DependentUpon>frmKhoiTaoAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmKhuVuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmKhuVuc.Designer.cs">
+      <DependentUpon>frmKhuVuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLichSuHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLichSuHoaDon.Designer.cs">
+      <DependentUpon>frmLichSuHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMoBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMoBan.Designer.cs">
+      <DependentUpon>frmMoBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMonAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMonAn.Designer.cs">
+      <DependentUpon>frmMonAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNguyenLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNguyenLieu.Designer.cs">
+      <DependentUpon>frmNguyenLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNhanVien.Designer.cs">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNhapKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNhapKho.Designer.cs">
+      <DependentUpon>frmNhapKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReportDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportDoanhThu.Designer.cs">
+      <DependentUpon>frmReportDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReportHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportHoaDon.Designer.cs">
+      <DependentUpon>frmReportHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRoleManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRoleManagement.Designer.cs">
+      <DependentUpon>frmRoleManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSoDoBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSoDoBan.Designer.cs">
+      <DependentUpon>frmSoDoBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmThanhToan.Designer.cs">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserManagement.Designer.cs">
+      <DependentUpon>frmUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmXemKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmXemKho.Designer.cs">
+      <DependentUpon>frmXemKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmXuLyPhieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmXuLyPhieu.Designer.cs">
+      <DependentUpon>frmXuLyPhieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DbFactory.cs" />
+    <Compile Include="Helpers\FormHelper.cs" />
+    <Compile Include="Helpers\NghiepVuHelper.cs" />
+    <Compile Include="Helpers\PasswordHelper.cs" />
+    <Compile Include="Helpers\UserSession.cs" />
+    <Compile Include="Models\BanDTO.cs" />
+    <Compile Include="Models\BanPhucVuDTO.cs" />
+    <Compile Include="Models\BaoCaoDoanhThuDTO.cs" />
+    <Compile Include="Models\BaoCaoHoaDonDTO.cs" />
+    <Compile Include="Models\Buffet.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Buffet.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietHoaDonDTO.cs" />
+    <Compile Include="Models\ChiTietNhapDTO.cs" />
+    <Compile Include="Models\ChiTietPhieuDTO.cs" />
+    <Compile Include="Models\ChuyenGopBanDTO.cs" />
+    <Compile Include="Models\ComboMonDTO.cs" />
+    <Compile Include="Models\DatBanDTO.cs" />
+    <Compile Include="Models\DinhLuongDTO.cs" />
+    <Compile Include="Models\DongGoiMonDTO.cs" />
+    <Compile Include="Models\GoiMonDTO.cs" />
+    <Compile Include="Models\HoaDonDTO.cs" />
+    <Compile Include="Models\MoBanDTO.cs" />
+    <Compile Include="Models\MonAnDTO.cs" />
+    <Compile Include="Models\NguyenLieuDTO.cs" />
+    <Compile Include="Models\TaiKhoanDTO.cs" />
+    <Compile Include="Models\ThanhToanDTO.cs" />
+    <Compile Include="Models\ThucDonDTO.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\dsDoanhThu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDoanhThu.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\dsHoaDon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHoaDon.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\BanRepository.cs" />
+    <Compile Include="Repositories\BaoCaoRepository.cs" />
+    <Compile Include="Repositories\ChucNangRepository.cs" />
+    <Compile Include="Repositories\ChuyenGopBanRepository.cs" />
+    <Compile Include="Repositories\ComboMonRepository.cs" />
+    <Compile Include="Repositories\ComboRepository.cs" />
+    <Compile Include="Repositories\DanhMucMonRepository.cs" />
+    <Compile Include="Repositories\DatBanRepository.cs" />
+    <Compile Include="Repositories\DinhLuongRepository.cs" />
+    <Compile Include="Repositories\GoiBuffetMonRepository.cs" />
+    <Compile Include="Repositories\GoiBuffetRepository.cs" />
+    <Compile Include="Repositories\GoiMonRepository.cs" />
+    <Compile Include="Repositories\HoaDonRepository.cs" />
+    <Compile Include="Repositories\KhuVucRepository.cs" />
+    <Compile Include="Repositories\MoBanRepository.cs" />
+    <Compile Include="Repositories\MonAnRepository.cs" />
+    <Compile Include="Repositories\NguoiDungRepository.cs" />
+    <Compile Include="Repositories\NguyenLieuRepository.cs" />
+    <Compile Include="Repositories\NhapKhoRepository.cs" />
+    <Compile Include="Repositories\PhanQuyenRepository.cs" />
+    <Compile Include="Repositories\PhucVuRepository.cs" />
+    <Compile Include="Repositories\TonKhoRepository.cs" />
+    <Compile Include="Repositories\VaiTroRepository.cs" />
+    <Compile Include="Repositories\XuLyPhieuRepository.cs" />
+    <Compile Include="Services\BanService.cs" />
+    <Compile Include="Services\BaoCaoService.cs" />
+    <Compile Include="Services\ChuyenGopBanService.cs" />
+    <Compile Include="Services\ComboMonService.cs" />
+    <Compile Include="Services\ComboService.cs" />
+    <Compile Include="Services\DangNhapService.cs" />
+    <Compile Include="Services\DanhMucMonService.cs" />
+    <Compile Include="Services\DatBanService.cs" />
+    <Compile Include="Services\DinhLuongService.cs" />
+    <Compile Include="Services\DoiMatKhauService.cs" />
+    <Compile Include="Services\GoiBuffetMonService.cs" />
+    <Compile Include="Services\GoiBuffetService.cs" />
+    <Compile Include="Services\GoiMonService.cs" />
+    <Compile Include="Services\HoaDonService.cs" />
+    <Compile Include="Services\KhoiTaoService.cs" />
+    <Compile Include="Services\KhuVucService.cs" />
+    <Compile Include="Services\MoBanService.cs" />
+    <Compile Include="Services\MonAnService.cs" />
+    <Compile Include="Services\NguoiDungService.cs" />
+    <Compile Include="Services\NguyenLieuService.cs" />
+    <Compile Include="Services\NhapKhoService.cs" />
+    <Compile Include="Services\PhanQuyenService.cs" />
+    <Compile Include="Services\PhucVuService.cs" />
+    <Compile Include="Services\ThanhToanService.cs" />
+    <Compile Include="Services\TonKhoService.cs" />
+    <Compile Include="Services\XuLyPhieuService.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Forms\frmBan.resx">
+      <DependentUpon>frmBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChuyenGopBan.resx">
+      <DependentUpon>frmChuyenGopBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCombo.resx">
+      <DependentUpon>frmCombo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmComboMon.resx">
+      <DependentUpon>frmComboMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDanhMucMon.resx">
+      <DependentUpon>frmDanhMucMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDatBan.resx">
+      <DependentUpon>frmDatBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDinhLuong.resx">
+      <DependentUpon>frmDinhLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGoiBuffet.resx">
+      <DependentUpon>frmGoiBuffet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGoiBuffetMon.resx">
+      <DependentUpon>frmGoiBuffetMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGoiMon.resx">
+      <DependentUpon>frmGoiMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmKhoiTaoAdmin.resx">
+      <DependentUpon>frmKhoiTaoAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmKhuVuc.resx">
+      <DependentUpon>frmKhuVuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLichSuHoaDon.resx">
+      <DependentUpon>frmLichSuHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMoBan.resx">
+      <DependentUpon>frmMoBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMonAn.resx">
+      <DependentUpon>frmMonAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNguyenLieu.resx">
+      <DependentUpon>frmNguyenLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNhanVien.resx">
+      <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNhapKho.resx">
+      <DependentUpon>frmNhapKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportDoanhThu.resx">
+      <DependentUpon>frmReportDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportHoaDon.resx">
+      <DependentUpon>frmReportHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRoleManagement.resx">
+      <DependentUpon>frmRoleManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSoDoBan.resx">
+      <DependentUpon>frmSoDoBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmThanhToan.resx">
+      <DependentUpon>frmThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserManagement.resx">
+      <DependentUpon>frmUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmXemKho.resx">
+      <DependentUpon>frmXemKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmXuLyPhieu.resx">
+      <DependentUpon>frmXuLyPhieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\rptDoanhThu.rdlc" />
+    <EmbeddedResource Include="Reports\rptHoaDon.rdlc" />
+    <None Include="Models\Buffet.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Buffet.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Models\Buffet.dbml.layout">
+      <DependentUpon>Buffet.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Reports\dsDoanhThu.xsc">
+      <DependentUpon>dsDoanhThu.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsDoanhThu.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDoanhThu.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\dsDoanhThu.xss">
+      <DependentUpon>dsDoanhThu.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsHoaDon.xsc">
+      <DependentUpon>dsHoaDon.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\dsHoaDon.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHoaDon.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\dsHoaDon.xss">
+      <DependentUpon>dsHoaDon.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Images\nen_ban.png" />
+    <None Include="Images\eye.png" />
+    <None Include="Images\eye_off.png" />
+    <Content Include="Images\nen_kem.png" />
+    <Content Include="Images\nen_nha_hang.png" />
+    <Content Include="Images\nen_xanh.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
