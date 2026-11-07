@@ -1,6 +1,7 @@
 ﻿using BuffetManager.Forms;
 using BuffetManager.Helpers;
 using BuffetManager.Repositories;
+using BuffetManager.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +16,17 @@ namespace BuffetManager
 {
     public partial class frmMain : Form
     {
+        private readonly ThongKeService thongKeService =
+    new ThongKeService();
+
         public frmMain()
         {
             InitializeComponent();
+
+            // Mặc định chọn tháng và năm hiện tại.
+            nudThang.Value = DateTime.Today.Month;
+            nudNam.Value = DateTime.Today.Year;
+
             btnBaoCao.Click += (s, e) => FormHelper.Run(() =>
             {
                 NghiepVuHelper.Quyen("XEM_BAOCAO");
@@ -324,6 +333,91 @@ namespace BuffetManager
             using (var form = new frmNhapKho())
             {
                 form.ShowDialog(this);
+            }
+        }
+
+        private void TaiThongKe()
+        {
+            int thang = (int)nudThang.Value;
+            int nam = (int)nudNam.Value;
+
+            // Lấy dữ liệu qua Service, có kiểm tra quyền.
+            var topMon = thongKeService.Top5MonTrongThang(thang, nam);
+            var theoNam = thongKeService.DoanhThuTheoNam(nam);
+            var theoHinhThuc =
+                thongKeService.DoanhThuTheoHinhThuc(thang, nam);
+
+            // Xóa dữ liệu cũ để không bị cộng dồn khi tải lại.
+            var cot = chartTopMon.Series["SoLuong"];
+            var duong = chartDoanhThu.Series["DoanhThu"];
+            var tron = chartHinhThuc.Series["TyLeDoanhThu"];
+
+            cot.Points.Clear();
+            duong.Points.Clear();
+            tron.Points.Clear();
+
+            // Biểu đồ cột: số lượng theo từng món.
+            foreach (var mon in topMon)
+            {
+                int viTri = cot.Points.AddXY(mon.TenMon, mon.SoLuong);
+
+                cot.Points[viTri].ToolTip =
+                    mon.TenMon + ": " + mon.SoLuong.ToString("0.##");
+            }
+
+            // Biểu đồ đường: luôn có đủ 12 tháng.
+            foreach (var item in theoNam)
+            {
+                duong.Points.AddXY(item.Thang, item.DoanhThu);
+            }
+
+            // Biểu đồ tròn: chỉ thêm phần có doanh thu dương.
+            foreach (var item in theoHinhThuc)
+            {
+                if (item.DoanhThu <= 0)
+                    continue;
+
+                string ten = BaoCaoService.TenHinhThuc(item.HinhThuc);
+
+                int viTri = tron.Points.AddXY(ten, item.DoanhThu);
+
+                tron.Points[viTri].ToolTip =
+                    ten + ": " + item.DoanhThu.ToString("N0") + " đ";
+            }
+
+            // Cập nhật tiêu đề theo bộ lọc.
+            chartTopMon.Titles[0].Text =
+                $"Top 5 món bán chạy — {thang:00}/{nam}";
+
+            chartDoanhThu.Titles[0].Text =
+                $"Doanh thu 12 tháng năm {nam}";
+
+            chartHinhThuc.Titles[0].Text =
+                $"Tỷ lệ doanh thu — {thang:00}/{nam}";
+
+            if (topMon.Count == 0)
+                chartTopMon.Titles[0].Text += " (Chưa có dữ liệu)";
+
+            if (tron.Points.Count == 0)
+                chartHinhThuc.Titles[0].Text += " (Chưa có doanh thu)";
+        }
+
+        private void btnTaiThongKe_Click(object sender, EventArgs e)
+        {
+            // Hiển thị thông báo nếu việc tải thống kê gặp lỗi.
+            FormHelper.Run(TaiThongKe);
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            // Ẩn dashboard nếu tài khoản không có quyền xem báo cáo.
+            bool coQuyen = UserSession.CoQuyen("XEM_BAOCAO");
+            pnlDashboard.Visible = coQuyen;
+
+            // Tự tải biểu đồ khi mở form.
+            if (coQuyen)
+            {
+                FormHelper.Run(TaiThongKe);
             }
         }
     }

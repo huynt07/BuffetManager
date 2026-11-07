@@ -64,6 +64,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -278,6 +279,7 @@
     <Compile Include="Models\NguyenLieuDTO.cs" />
     <Compile Include="Models\TaiKhoanDTO.cs" />
     <Compile Include="Models\ThanhToanDTO.cs" />
+    <Compile Include="Models\ThongKeDTO.cs" />
     <Compile Include="Models\ThucDonDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -312,6 +314,7 @@
     <Compile Include="Repositories\NhapKhoRepository.cs" />
     <Compile Include="Repositories\PhanQuyenRepository.cs" />
     <Compile Include="Repositories\PhucVuRepository.cs" />
+    <Compile Include="Repositories\ThongKeRepository.cs" />
     <Compile Include="Repositories\TonKhoRepository.cs" />
     <Compile Include="Repositories\VaiTroRepository.cs" />
     <Compile Include="Repositories\XuLyPhieuRepository.cs" />
@@ -339,6 +342,7 @@
     <Compile Include="Services\PhanQuyenService.cs" />
     <Compile Include="Services\PhucVuService.cs" />
     <Compile Include="Services\ThanhToanService.cs" />
+    <Compile Include="Services\ThongKeService.cs" />
     <Compile Include="Services\TonKhoService.cs" />
     <Compile Include="Services\XuLyPhieuService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
