@@ -14,18 +14,75 @@ namespace BuffetManager.Repositories
             {
                 var l = NghiepVuHelper.DangPhucVu(db, maLuot);
                 tim = (tim ?? "").Trim();
+
+                // Hiển thị danh sách combo
                 if (loai == "COMBO")
                 {
                     if (l.HinhThuc != "COMBO")
                         return new List<ThucDonDTO>();
-                    return db.COMBOs.Where(c => c.DangBan && c.TenCombo.Contains(tim) && db.COMBO_MONs.Any(cm => cm.MaCombo == c.MaCombo)).OrderBy(c => c.TenCombo).Select(c => new ThucDonDTO { Ma = c.MaCombo, Loai = "COMBO", Ten = c.TenCombo, DonVi = "Combo", DonGia = c.GiaCombo }).ToList();
+
+                    return db.COMBOs
+                        .Where(c => c.DangBan
+                            && c.TenCombo.Contains(tim)
+                            && db.COMBO_MONs.Any(
+                                cm => cm.MaCombo == c.MaCombo))
+                        .OrderBy(c => c.TenCombo)
+                        .Select(c => new ThucDonDTO
+                        {
+                            Ma = c.MaCombo,
+                            Loai = "COMBO",
+                            Ten = c.TenCombo,
+                            DonVi = "Combo",
+                            DonGia = c.GiaCombo
+                        })
+                        .ToList();
                 }
 
-                var q = db.MONANs.Where(m => m.DangBan && m.TenMon.Contains(tim));
+                var q = db.MONANs.Where(m =>
+                    m.DangBan && m.TenMon.Contains(tim));
+
+                bool free = false;
+
                 if (l.HinhThuc == "BUFFET")
-                    q = q.Where(m => db.GOIBUFFET_MONs.Any(g => g.MaGoi == l.MaGoi && g.MaMon == m.MaMon));
-                bool free = l.HinhThuc == "BUFFET";
-                return q.OrderBy(m => m.TenMon).Select(m => new ThucDonDTO { Ma = m.MaMon, Loai = "MON", Ten = m.TenMon, DonVi = m.DonVi, DonGia = free ? 0 : m.GiaLe }).ToList();
+                {
+                    if (loai == "BUFFET")
+                    {
+                        // Chỉ lấy món thuộc gói Buffet
+                        q = q.Where(m =>
+                            db.GOIBUFFET_MONs.Any(g =>
+                                g.MaGoi == l.MaGoi &&
+                                g.MaMon == m.MaMon));
+
+                        free = true;
+                    }
+                    else if (loai == "GOI_THEM")
+                    {
+                        // Chỉ lấy món nằm ngoài gói Buffet
+                        q = q.Where(m =>
+                            !db.GOIBUFFET_MONs.Any(g =>
+                                g.MaGoi == l.MaGoi &&
+                                g.MaMon == m.MaMon));
+                    }
+                    else
+                    {
+                        return new List<ThucDonDTO>();
+                    }
+                }
+                else if (loai != "MON")
+                {
+                    return new List<ThucDonDTO>();
+                }
+
+                return q.OrderBy(m => m.TenMon)
+                    .Select(m => new ThucDonDTO
+                    {
+                        Ma = m.MaMon,
+                        Loai = "MON",
+                        Ten = m.TenMon,
+                        DonVi = m.DonVi,
+                        DonGia = free ? 0 : m.GiaLe
+                    })
+                    .ToList();
             }
         }
 
@@ -104,9 +161,41 @@ namespace BuffetManager.Repositories
                     }
                     else
                     {
-                        var line = TaoMon(db, l, phieu.MaPG, d.Ma, d.SoLuong, l.HinhThuc == "BUFFET" ? "BUFFET" : l.HinhThuc == "COMBO" ? "GOI_THEM" : "GOIMON", null);
+                        string nguon;
+
+                        if (l.HinhThuc == "BUFFET")
+                        {
+                            // Kiểm tra món có thuộc gói Buffet không
+                            bool trongGoi = db.GOIBUFFET_MONs.Any(g =>
+                                g.MaGoi == l.MaGoi &&
+                                g.MaMon == d.Ma);
+
+                            // Trong gói miễn phí, ngoài gói tính tiền
+                            nguon = trongGoi ? "BUFFET" : "GOI_THEM";
+                        }
+                        else if (l.HinhThuc == "COMBO")
+                        {
+                            nguon = "GOI_THEM";
+                        }
+                        else
+                        {
+                            nguon = "GOIMON";
+                        }
+
+                        var line = TaoMon(
+                            db,
+                            l,
+                            phieu.MaPG,
+                            d.Ma,
+                            d.SoLuong,
+                            nguon,
+                            null
+                        );
+
                         if (line.DonGia != d.DonGia)
-                            throw new InvalidOperationException("Giá món đã thay đổi. Hãy xóa dòng và chọn lại.");
+                            throw new InvalidOperationException(
+                                "Giá món đã thay đổi. Hãy xóa dòng và chọn lại.");
+
                         lines.Add(line);
                     }
                 }

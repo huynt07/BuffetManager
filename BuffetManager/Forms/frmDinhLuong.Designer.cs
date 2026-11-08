@@ -136,7 +136,7 @@
             1,
             0,
             0,
-            196608});
+            65536});
             this.nudLuongCan.Location = new System.Drawing.Point(733, 62);
             this.nudLuongCan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudLuongCan.Maximum = new decimal(new int[] {

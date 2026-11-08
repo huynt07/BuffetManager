@@ -41,10 +41,23 @@ namespace BuffetManager.Forms
                     lblThongTinBan.Text = "Bàn: " + p.TenBan(id);
                     lblHinhThuc.Text = "Hình thức: " + l.HinhThuc;
                     lblGoiBuffet.Text = l.MaGoi.HasValue ? "Mã gói: " + l.MaGoi : "";
-                    if (l.HinhThuc == "COMBO")
-                        FormHelper.Combo(cboLoaiChon, "COMBO", "Combo", "MON", "Món gọi thêm");
+                    if (l.HinhThuc == "BUFFET")
+                    {
+                        FormHelper.Combo(cboLoaiChon,
+                            "BUFFET", "Món trong gói Buffet",
+                            "GOI_THEM", "Món ngoài gói (tính tiền)");
+                    }
+                    else if (l.HinhThuc == "COMBO")
+                    {
+                        FormHelper.Combo(cboLoaiChon,
+                            "COMBO", "Combo",
+                            "MON", "Món gọi thêm (tính tiền)");
+                    }
                     else
-                        FormHelper.Combo(cboLoaiChon, "MON", "Món ăn / đồ uống");
+                    {
+                        FormHelper.Combo(cboLoaiChon,
+                            "MON", "Món ăn / đồ uống");
+                    }
                     dgvChiTietGoi.DataSource = draft;
                     Reload();
                     Total();
