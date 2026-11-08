@@ -179,7 +179,7 @@
             this.MinimizeBox = false;
             this.Name = "frmChuyenGopBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmChuyenGopBan";
+            this.Text = "Chuyển / gộp bàn";
             this.ResumeLayout(false);
             this.PerformLayout();
 

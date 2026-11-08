@@ -31,10 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoiMon));
@@ -45,6 +45,10 @@
             this.txtTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.nudSoLuong = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.dgvThucDon = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.tdLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tdTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tdDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tdDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtGhiChu = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoaDong = new Guna.UI2.WinForms.Guna2Button();
@@ -53,19 +57,15 @@
             this.btnDong = new Guna.UI2.WinForms.Guna2Button();
             this.lblTongTienDot = new System.Windows.Forms.Label();
             this.dgvChiTietGoi = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.lblSoLuong = new System.Windows.Forms.Label();
-            this.lblGhiChu = new System.Windows.Forms.Label();
-            this.lblLoaiChon = new System.Windows.Forms.Label();
-            this.lblTimKiem = new System.Windows.Forms.Label();
-            this.tdLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tdTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tdDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tdDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctgLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctgTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctgSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctgDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctgThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblSoLuong = new System.Windows.Forms.Label();
+            this.lblGhiChu = new System.Windows.Forms.Label();
+            this.lblLoaiChon = new System.Windows.Forms.Label();
+            this.lblTimKiem = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietGoi)).BeginInit();
@@ -212,6 +212,44 @@
             this.dgvThucDon.ThemeStyle.ReadOnly = true;
             this.dgvThucDon.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dgvThucDon.ThemeStyle.RowsStyle.Height = 24;
+            // 
+            // tdLoai
+            // 
+            this.tdLoai.DataPropertyName = "Loai";
+            this.tdLoai.FillWeight = 20F;
+            this.tdLoai.HeaderText = "Loại";
+            this.tdLoai.MinimumWidth = 6;
+            this.tdLoai.Name = "tdLoai";
+            this.tdLoai.ReadOnly = true;
+            // 
+            // tdTen
+            // 
+            this.tdTen.DataPropertyName = "Ten";
+            this.tdTen.FillWeight = 35F;
+            this.tdTen.HeaderText = "Tên món / Combo";
+            this.tdTen.MinimumWidth = 6;
+            this.tdTen.Name = "tdTen";
+            this.tdTen.ReadOnly = true;
+            // 
+            // tdDonVi
+            // 
+            this.tdDonVi.DataPropertyName = "DonVi";
+            this.tdDonVi.FillWeight = 20F;
+            this.tdDonVi.HeaderText = "Đơn vị";
+            this.tdDonVi.MinimumWidth = 6;
+            this.tdDonVi.Name = "tdDonVi";
+            this.tdDonVi.ReadOnly = true;
+            // 
+            // tdDonGia
+            // 
+            this.tdDonGia.DataPropertyName = "DonGia";
+            dataGridViewCellStyle3.Format = "N0";
+            this.tdDonGia.DefaultCellStyle = dataGridViewCellStyle3;
+            this.tdDonGia.FillWeight = 25F;
+            this.tdDonGia.HeaderText = "Đơn giá";
+            this.tdDonGia.MinimumWidth = 6;
+            this.tdDonGia.Name = "tdDonGia";
+            this.tdDonGia.ReadOnly = true;
             // 
             // txtGhiChu
             // 
@@ -374,80 +412,6 @@
             this.dgvChiTietGoi.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dgvChiTietGoi.ThemeStyle.RowsStyle.Height = 24;
             // 
-            // lblSoLuong
-            // 
-            this.lblSoLuong.AutoSize = true;
-            this.lblSoLuong.Location = new System.Drawing.Point(70, 694);
-            this.lblSoLuong.Name = "lblSoLuong";
-            this.lblSoLuong.Size = new System.Drawing.Size(91, 25);
-            this.lblSoLuong.TabIndex = 8;
-            this.lblSoLuong.Text = "Số lượng";
-            // 
-            // lblGhiChu
-            // 
-            this.lblGhiChu.AutoSize = true;
-            this.lblGhiChu.Location = new System.Drawing.Point(417, 694);
-            this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(81, 25);
-            this.lblGhiChu.TabIndex = 8;
-            this.lblGhiChu.Text = "Ghi chú";
-            // 
-            // lblLoaiChon
-            // 
-            this.lblLoaiChon.AutoSize = true;
-            this.lblLoaiChon.Location = new System.Drawing.Point(70, 126);
-            this.lblLoaiChon.Name = "lblLoaiChon";
-            this.lblLoaiChon.Size = new System.Drawing.Size(98, 25);
-            this.lblLoaiChon.TabIndex = 9;
-            this.lblLoaiChon.Text = "Loại chọn";
-            // 
-            // lblTimKiem
-            // 
-            this.lblTimKiem.AutoSize = true;
-            this.lblTimKiem.Location = new System.Drawing.Point(417, 126);
-            this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(97, 25);
-            this.lblTimKiem.TabIndex = 9;
-            this.lblTimKiem.Text = "Tìm kiếm";
-            // 
-            // tdLoai
-            // 
-            this.tdLoai.DataPropertyName = "Loai";
-            this.tdLoai.FillWeight = 20F;
-            this.tdLoai.HeaderText = "Loại";
-            this.tdLoai.MinimumWidth = 6;
-            this.tdLoai.Name = "tdLoai";
-            this.tdLoai.ReadOnly = true;
-            // 
-            // tdTen
-            // 
-            this.tdTen.DataPropertyName = "Ten";
-            this.tdTen.FillWeight = 35F;
-            this.tdTen.HeaderText = "Tên món / Combo";
-            this.tdTen.MinimumWidth = 6;
-            this.tdTen.Name = "tdTen";
-            this.tdTen.ReadOnly = true;
-            // 
-            // tdDonVi
-            // 
-            this.tdDonVi.DataPropertyName = "DonVi";
-            this.tdDonVi.FillWeight = 20F;
-            this.tdDonVi.HeaderText = "Đơn vị";
-            this.tdDonVi.MinimumWidth = 6;
-            this.tdDonVi.Name = "tdDonVi";
-            this.tdDonVi.ReadOnly = true;
-            // 
-            // tdDonGia
-            // 
-            this.tdDonGia.DataPropertyName = "DonGia";
-            dataGridViewCellStyle3.Format = "N0";
-            this.tdDonGia.DefaultCellStyle = dataGridViewCellStyle3;
-            this.tdDonGia.FillWeight = 25F;
-            this.tdDonGia.HeaderText = "Đơn giá";
-            this.tdDonGia.MinimumWidth = 6;
-            this.tdDonGia.Name = "tdDonGia";
-            this.tdDonGia.ReadOnly = true;
-            // 
             // ctgLoai
             // 
             this.ctgLoai.DataPropertyName = "Loai";
@@ -497,6 +461,42 @@
             this.ctgThanhTien.Name = "ctgThanhTien";
             this.ctgThanhTien.ReadOnly = true;
             // 
+            // lblSoLuong
+            // 
+            this.lblSoLuong.AutoSize = true;
+            this.lblSoLuong.Location = new System.Drawing.Point(70, 694);
+            this.lblSoLuong.Name = "lblSoLuong";
+            this.lblSoLuong.Size = new System.Drawing.Size(91, 25);
+            this.lblSoLuong.TabIndex = 8;
+            this.lblSoLuong.Text = "Số lượng";
+            // 
+            // lblGhiChu
+            // 
+            this.lblGhiChu.AutoSize = true;
+            this.lblGhiChu.Location = new System.Drawing.Point(417, 694);
+            this.lblGhiChu.Name = "lblGhiChu";
+            this.lblGhiChu.Size = new System.Drawing.Size(81, 25);
+            this.lblGhiChu.TabIndex = 8;
+            this.lblGhiChu.Text = "Ghi chú";
+            // 
+            // lblLoaiChon
+            // 
+            this.lblLoaiChon.AutoSize = true;
+            this.lblLoaiChon.Location = new System.Drawing.Point(70, 126);
+            this.lblLoaiChon.Name = "lblLoaiChon";
+            this.lblLoaiChon.Size = new System.Drawing.Size(98, 25);
+            this.lblLoaiChon.TabIndex = 9;
+            this.lblLoaiChon.Text = "Loại chọn";
+            // 
+            // lblTimKiem
+            // 
+            this.lblTimKiem.AutoSize = true;
+            this.lblTimKiem.Location = new System.Drawing.Point(417, 126);
+            this.lblTimKiem.Name = "lblTimKiem";
+            this.lblTimKiem.Size = new System.Drawing.Size(97, 25);
+            this.lblTimKiem.TabIndex = 9;
+            this.lblTimKiem.Text = "Tìm kiếm";
+            // 
             // frmGoiMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -527,7 +527,7 @@
             this.MaximizeBox = false;
             this.Name = "frmGoiMon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmGoiMon";
+            this.Text = "Gọi món";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).EndInit();

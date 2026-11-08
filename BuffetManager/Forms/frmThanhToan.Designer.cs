@@ -57,14 +57,14 @@
             this.lblPhuongThuc = new System.Windows.Forms.Label();
             this.lblTienKhachDua = new System.Windows.Forms.Label();
             this.pnlThanhToan = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnlPhatThua = new Guna.UI2.WinForms.Guna2Panel();
             this.picQR = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pnlPhatThua = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKhoiLuongThua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTienKhachDua)).BeginInit();
             this.pnlThanhToan.SuspendLayout();
-            this.pnlPhatThua.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQR)).BeginInit();
+            this.pnlPhatThua.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblThongTinBan
@@ -292,6 +292,11 @@
             this.nudTienKhachDua.BorderRadius = 8;
             this.nudTienKhachDua.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.nudTienKhachDua.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.nudTienKhachDua.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.nudTienKhachDua.Location = new System.Drawing.Point(93, 581);
             this.nudTienKhachDua.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.nudTienKhachDua.Maximum = new decimal(new int[] {
@@ -395,16 +400,6 @@
             this.pnlThanhToan.Size = new System.Drawing.Size(434, 842);
             this.pnlThanhToan.TabIndex = 8;
             // 
-            // pnlPhatThua
-            // 
-            this.pnlPhatThua.Controls.Add(this.nudKhoiLuongThua);
-            this.pnlPhatThua.Controls.Add(this.lblTienPhat);
-            this.pnlPhatThua.Controls.Add(this.lblDonGiaPhat);
-            this.pnlPhatThua.Location = new System.Drawing.Point(21, 3);
-            this.pnlPhatThua.Name = "pnlPhatThua";
-            this.pnlPhatThua.Size = new System.Drawing.Size(382, 128);
-            this.pnlPhatThua.TabIndex = 8;
-            // 
             // picQR
             // 
             this.picQR.ImageRotate = 0F;
@@ -415,6 +410,16 @@
             this.picQR.TabIndex = 9;
             this.picQR.TabStop = false;
             this.picQR.Visible = false;
+            // 
+            // pnlPhatThua
+            // 
+            this.pnlPhatThua.Controls.Add(this.nudKhoiLuongThua);
+            this.pnlPhatThua.Controls.Add(this.lblTienPhat);
+            this.pnlPhatThua.Controls.Add(this.lblDonGiaPhat);
+            this.pnlPhatThua.Location = new System.Drawing.Point(21, 3);
+            this.pnlPhatThua.Name = "pnlPhatThua";
+            this.pnlPhatThua.Size = new System.Drawing.Size(382, 128);
+            this.pnlPhatThua.TabIndex = 8;
             // 
             // frmThanhToan
             // 
@@ -432,16 +437,16 @@
             this.MaximizeBox = false;
             this.Name = "frmThanhToan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmThanhToan";
+            this.Text = "Thanh toán";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKhoiLuongThua)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTienKhachDua)).EndInit();
             this.pnlThanhToan.ResumeLayout(false);
             this.pnlThanhToan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picQR)).EndInit();
             this.pnlPhatThua.ResumeLayout(false);
             this.pnlPhatThua.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picQR)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
