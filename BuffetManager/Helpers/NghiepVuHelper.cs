@@ -22,12 +22,20 @@ namespace BuffetManager.Helpers
         // Khóa dòng trong transaction: hai máy không cùng mở/thanh toán một bàn.
         public static void KhoaBan(BuffetDataContext db, int id)
         {
-            db.ExecuteQuery<int>("SELECT MaBan FROM dbo.BAN WITH (UPDLOCK,HOLDLOCK) WHERE MaBan={0}", id).ToList();
+            // Đọc bàn bằng LINQ trong transaction hiện tại.
+            db.BANs
+                .Where(x => x.MaBan == id)
+                .Select(x => x.MaBan)
+                .ToList();
         }
 
         public static void KhoaLuot(BuffetDataContext db, int id)
         {
-            db.ExecuteQuery<int>("SELECT MaLuot FROM dbo.LUOTPHUCVU WITH (UPDLOCK,HOLDLOCK) WHERE MaLuot={0}", id).ToList();
+            // Đọc lượt phục vụ bằng LINQ trong transaction hiện tại.
+            db.LUOTPHUCVUs
+                .Where(x => x.MaLuot == id)
+                .Select(x => x.MaLuot)
+                .ToList();
         }
 
         public static LUOTPHUCVU DangPhucVu(BuffetDataContext db, int id)

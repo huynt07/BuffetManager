@@ -74,7 +74,7 @@
       <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="TrangThai" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="PhienBan" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" IsDbGenerated="true" />
+      <Column Name="PhienBan" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="CHITIETGOIMON_BIENDONGKHO" Member="BIENDONGKHOs" ThisKey="MaCTG" OtherKey="MaCTG" Type="BIENDONGKHO" />
       <Association Name="CHITIETGOIMON_CHITIETHOADON" Member="CHITIETHOADONs" ThisKey="MaCTG" OtherKey="MaCTG" Type="CHITIETHOADON" />
       <Association Name="LUACHONCOMBO_CHITIETGOIMON" Member="LUACHONCOMBO" ThisKey="MaChonCombo,MaLuot" OtherKey="MaChonCombo,MaLuot" Type="LUACHONCOMBO" IsForeignKey="true" />
@@ -232,7 +232,7 @@
       <Column Name="GiaPhatMoiKg" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="TrangThai" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="GopVaoMaLuot" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhienBan" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" IsDbGenerated="true" />
+      <Column Name="PhienBan" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="LUOTPHUCVU_VEBUFFET" Member="VEBUFFETs" ThisKey="MaLuot" OtherKey="MaLuot" Type="VEBUFFET" />
       <Association Name="LUOTPHUCVU_HOADON" Member="HOADONs" ThisKey="MaLuot" OtherKey="MaLuot" Type="HOADON" />
       <Association Name="LUOTPHUCVU_LUACHONCOMBO" Member="LUACHONCOMBOs" ThisKey="MaLuot" OtherKey="MaLuot" Type="LUACHONCOMBO" />
@@ -263,7 +263,7 @@
   <Table Name="dbo.NGUOIDUNG" Member="NGUOIDUNGs">
     <Type Name="NGUOIDUNG">
       <Column Name="MaND" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-		<Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="MaNV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="MaVaiTro" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="TenDangNhap" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -289,7 +289,7 @@
       <Column Name="BoPhan" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="TonKho" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
       <Column Name="MucCanhBao" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
-      <Column Name="PhienBan" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" IsDbGenerated="true" />
+      <Column Name="PhienBan" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="NGUYENLIEU_BIENDONGKHO" Member="BIENDONGKHOs" ThisKey="MaNL" OtherKey="MaNL" Type="BIENDONGKHO" />
       <Association Name="NGUYENLIEU_CHITIETPHIEUNHAP" Member="CHITIETPHIEUNHAPs" ThisKey="MaNL" OtherKey="MaNL" Type="CHITIETPHIEUNHAP" />
       <Association Name="NGUYENLIEU_DINHLUONG" Member="DINHLUONGs" ThisKey="MaNL" OtherKey="MaNL" Type="DINHLUONG" />
@@ -351,6 +351,12 @@
       <Column Name="TenVaiTro" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="VAITRO_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="MaVaiTro" OtherKey="MaVaiTro" Type="NGUOIDUNG" />
       <Association Name="VAITRO_PHANQUYEN" Member="PHANQUYENs" ThisKey="MaVaiTro" OtherKey="MaVaiTro" Type="PHANQUYEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BODEM_MATAIKHOAN" Member="BODEM_MATAIKHOANs">
+    <Type Name="BODEM_MATAIKHOAN">
+      <Column Name="MaVaiTro" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoCuoi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

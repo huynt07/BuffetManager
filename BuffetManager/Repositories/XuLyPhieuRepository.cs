@@ -87,8 +87,10 @@ namespace BuffetManager.Repositories
                     // Hoàn theo sổ xuất thực tế, không theo định lượng có thể đã sửa.
                     foreach (var g in exports.GroupBy(x => x.MaNL).OrderBy(x => x.Key))
                     {
-                        db.ExecuteQuery<int>("SELECT MaNL FROM dbo.NGUYENLIEU WITH (UPDLOCK,HOLDLOCK) WHERE MaNL={0}", g.Key).ToList();
-                        db.NGUYENLIEUs.Single(x => x.MaNL == g.Key).TonKho -= g.Sum(x => x.SoLuong);
+                        var nl = db.NGUYENLIEUs.Single(x => x.MaNL == g.Key);
+
+                        // Hoàn số nguyên liệu đã xuất khi hủy món.
+                        nl.TonKho -= g.Sum(x => x.SoLuong);
                     }
 
                     foreach (var e in exports)

@@ -114,6 +114,9 @@ namespace BuffetManager.Models
     partial void InsertVAITRO(VAITRO instance);
     partial void UpdateVAITRO(VAITRO instance);
     partial void DeleteVAITRO(VAITRO instance);
+    partial void InsertBODEM_MATAIKHOAN(BODEM_MATAIKHOAN instance);
+    partial void UpdateBODEM_MATAIKHOAN(BODEM_MATAIKHOAN instance);
+    partial void DeleteBODEM_MATAIKHOAN(BODEM_MATAIKHOAN instance);
     #endregion
 		
 		public BuffetDataContext() : 
@@ -367,6 +370,14 @@ namespace BuffetManager.Models
 			get
 			{
 				return this.GetTable<VAITRO>();
+			}
+		}
+		
+		public System.Data.Linq.Table<BODEM_MATAIKHOAN> BODEM_MATAIKHOANs
+		{
+			get
+			{
+				return this.GetTable<BODEM_MATAIKHOAN>();
 			}
 		}
 	}
@@ -8108,6 +8119,92 @@ namespace BuffetManager.Models
 		{
 			this.SendPropertyChanging();
 			entity.VAITRO = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BODEM_MATAIKHOAN")]
+	public partial class BODEM_MATAIKHOAN : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MaVaiTro;
+		
+		private int _SoCuoi;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaVaiTroChanging(string value);
+    partial void OnMaVaiTroChanged();
+    partial void OnSoCuoiChanging(int value);
+    partial void OnSoCuoiChanged();
+    #endregion
+		
+		public BODEM_MATAIKHOAN()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaVaiTro", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MaVaiTro
+		{
+			get
+			{
+				return this._MaVaiTro;
+			}
+			set
+			{
+				if ((this._MaVaiTro != value))
+				{
+					this.OnMaVaiTroChanging(value);
+					this.SendPropertyChanging();
+					this._MaVaiTro = value;
+					this.SendPropertyChanged("MaVaiTro");
+					this.OnMaVaiTroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoCuoi", DbType="Int NOT NULL")]
+		public int SoCuoi
+		{
+			get
+			{
+				return this._SoCuoi;
+			}
+			set
+			{
+				if ((this._SoCuoi != value))
+				{
+					this.OnSoCuoiChanging(value);
+					this.SendPropertyChanging();
+					this._SoCuoi = value;
+					this.SendPropertyChanged("SoCuoi");
+					this.OnSoCuoiChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

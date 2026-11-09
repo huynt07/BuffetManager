@@ -215,7 +215,6 @@ namespace BuffetManager.Repositories
 
                 foreach (var g in needs.GroupBy(x => x.MaNL).OrderBy(x => x.Key))
                 {
-                    db.ExecuteQuery<int>("SELECT MaNL FROM dbo.NGUYENLIEU WITH (UPDLOCK,HOLDLOCK) WHERE MaNL={0}", g.Key).ToList();
                     var nl = db.NGUYENLIEUs.Single(x => x.MaNL == g.Key);
                     decimal can = -g.Sum(x => x.SoLuong);
                     if (nl.TonKho < can)

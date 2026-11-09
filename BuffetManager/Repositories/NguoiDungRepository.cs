@@ -32,7 +32,7 @@ namespace BuffetManager.Repositories
             byte[] matKhauHash,
             byte[] salt)
         {
-            using (var scope = new TransactionScope())
+            using (var scope = NghiepVuHelper.Transaction())
             using (var db = DbFactory.Create())
             {
                 // Chỉ dùng để khởi tạo khi chưa có tài khoản nào
@@ -164,7 +164,7 @@ namespace BuffetManager.Repositories
             byte[] salt,
             bool hoatDong)
         {
-            using (var scope = new TransactionScope())
+            using (var scope = NghiepVuHelper.Transaction())
             using (var db = DbFactory.Create())
             {
                 // Không cho phép trùng tên đăng nhập
@@ -221,7 +221,7 @@ namespace BuffetManager.Repositories
             string maVaiTro,
             bool hoatDong)
         {
-            using (var scope = new TransactionScope())
+            using (var scope = NghiepVuHelper.Transaction())
             using (var db = DbFactory.Create())
             {
                 // Tìm tài khoản cần cập nhật
@@ -351,15 +351,22 @@ namespace BuffetManager.Repositories
                         "Vai trò không hợp lệ.");
             }
 
-            // Tăng bộ đếm tương ứng trong SQL Server.
-            // UPDATE đảm bảo hai tài khoản không lấy cùng số.
-            int soMoi = db.ExecuteQuery<int>(
-                @"UPDATE dbo.BODEM_MATAIKHOAN
-          SET SoCuoi = SoCuoi + 1
-          OUTPUT INSERTED.SoCuoi
-          WHERE MaVaiTro = {0}",
-                maVaiTro
-            ).Single();
+            var boDem = db.GetTable<BODEM_MATAIKHOAN>()
+                .SingleOrDefault(x => x.MaVaiTro == maVaiTro);
+
+            if (boDem == null)
+            {
+                throw new InvalidOperationException(
+                    "Không tìm thấy bộ đếm cho vai trò " + maVaiTro);
+            }
+
+            // Tăng mã theo LINQ to SQL
+            boDem.SoCuoi = checked(boDem.SoCuoi + 1);
+
+            // Ghi bộ đếm xuống database trong transaction hiện tại
+            db.SubmitChanges();
+
+            int soMoi = boDem.SoCuoi;
 
             return tienTo + soMoi.ToString();
         }

@@ -67,7 +67,7 @@ namespace BuffetManager.Repositories
             using (var db = DbFactory.Create())
             {
                 // Nhóm hóa đơn theo Buffet, Combo, Gọi món.
-                // Dùng query syntax để bổ sung kỹ thuật LINQ của đồ án.
+                // Dùng query syntax để bổ sung kỹ thuật LINQ .
                 var query =
                     from h in db.HOADONs
                     where h.NgayLap >= tuNgay
