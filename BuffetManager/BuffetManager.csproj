@@ -130,6 +130,12 @@
     <Compile Include="Forms\frmDinhLuong.Designer.cs">
       <DependentUpon>frmDinhLuong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmGioiThieuThanhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGioiThieuThanhVien.Designer.cs">
+      <DependentUpon>frmGioiThieuThanhVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmGoiBuffet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -375,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDinhLuong.resx">
       <DependentUpon>frmDinhLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGioiThieuThanhVien.resx">
+      <DependentUpon>frmGioiThieuThanhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGoiBuffet.resx">
       <DependentUpon>frmGoiBuffet.cs</DependentUpon>

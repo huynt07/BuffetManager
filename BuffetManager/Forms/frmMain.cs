@@ -420,5 +420,13 @@ namespace BuffetManager
                 FormHelper.Run(TaiThongKe);
             }
         }
+
+        private void btnGioiThieu_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmGioiThieuThanhVien())
+            {
+                frm.ShowDialog(this);
+            }
+        }
     }
 }

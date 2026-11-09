@@ -76,6 +76,7 @@
             this.nudThang = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.lblNam = new System.Windows.Forms.Label();
             this.lblThang = new System.Windows.Forms.Label();
+            this.btnGioiThieu = new Guna.UI2.WinForms.Guna2Button();
             this.cmsDanhMuc.SuspendLayout();
             this.cmsKho.SuspendLayout();
             this.pnlMenuBottom.SuspendLayout();
@@ -363,6 +364,7 @@
             // 
             this.pnlDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.pnlDashboard.BorderRadius = 15;
+            this.pnlDashboard.Controls.Add(this.btnGioiThieu);
             this.pnlDashboard.Controls.Add(this.tlpBieuDo);
             this.pnlDashboard.Controls.Add(this.btnTaiThongKe);
             this.pnlDashboard.Controls.Add(this.nudNam);
@@ -520,7 +522,7 @@
             this.btnTaiThongKe.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTaiThongKe.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnTaiThongKe.ForeColor = System.Drawing.Color.White;
-            this.btnTaiThongKe.Location = new System.Drawing.Point(774, 60);
+            this.btnTaiThongKe.Location = new System.Drawing.Point(766, 59);
             this.btnTaiThongKe.Name = "btnTaiThongKe";
             this.btnTaiThongKe.Size = new System.Drawing.Size(180, 60);
             this.btnTaiThongKe.TabIndex = 2;
@@ -599,6 +601,21 @@
             this.lblThang.TabIndex = 0;
             this.lblThang.Text = "Tháng";
             // 
+            // btnGioiThieu
+            // 
+            this.btnGioiThieu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGioiThieu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGioiThieu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGioiThieu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGioiThieu.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnGioiThieu.ForeColor = System.Drawing.Color.White;
+            this.btnGioiThieu.Location = new System.Drawing.Point(-1, 0);
+            this.btnGioiThieu.Name = "btnGioiThieu";
+            this.btnGioiThieu.Size = new System.Drawing.Size(180, 45);
+            this.btnGioiThieu.TabIndex = 4;
+            this.btnGioiThieu.Text = "Giới thiệu nhóm";
+            this.btnGioiThieu.Click += new System.EventHandler(this.btnGioiThieu_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -668,6 +685,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTopMon;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartHinhThuc;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
+        private Guna.UI2.WinForms.Guna2Button btnGioiThieu;
     }
 }
 
