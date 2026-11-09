@@ -76,10 +76,5 @@ namespace BuffetManager.Forms
             // Chỉ hiển thị sau khi đã truyền đủ dữ liệu và Parameter.
             reportViewer1.RefreshReport();
         }
-
-        private void frmReportDoanhThu_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

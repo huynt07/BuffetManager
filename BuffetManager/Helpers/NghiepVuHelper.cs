@@ -81,10 +81,5 @@ namespace BuffetManager.Helpers
                 orderby b.TenBan
                 select b.TenBan).ToList());
         }
-
-        public static decimal Tien(decimal value)
-        {
-            return Math.Round(value, 0, MidpointRounding.AwayFromZero);
-        }
     }
 }

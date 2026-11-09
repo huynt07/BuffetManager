@@ -87,12 +87,5 @@ namespace BuffetManager.Helpers
                 if (g.Columns.Contains(n))
                     g.Columns[n].DefaultCellStyle.Format = "N2";
         }
-
-        public static void InvoiceGrid(DataGridView g)
-        {
-            Grid(g);
-            Columns(g, "LoaiDong", "Loại", "TenDong", "Nội dung", "DonVi", "Đơn vị", "SoLuong", "Số lượng", "DonGia", "Đơn giá", "ThanhTien", "Thành tiền");
-            Money(g, "DonGia", "ThanhTien");
-        }
     }
 }

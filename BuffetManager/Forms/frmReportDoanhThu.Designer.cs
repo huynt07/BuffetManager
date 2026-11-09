@@ -55,7 +55,6 @@
             this.Name = "frmReportDoanhThu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Báo cáo doanh thu";
-            this.Load += new System.EventHandler(this.frmReportDoanhThu_Load);
             this.ResumeLayout(false);
 
         }
