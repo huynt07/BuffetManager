@@ -22,18 +22,44 @@ namespace BuffetManager
 
             try
             {
-                var repository = new NguoiDungRepository();
+                bool daCoTaiKhoan;
 
-                // Chưa có tài khoản thì yêu cầu khởi tạo Admin
-                if (!repository.DaCoTaiKhoan())
+                while (true)
+                {
+                    try
+                    {
+                        var repository = new NguoiDungRepository();
+                        daCoTaiKhoan = repository.DaCoTaiKhoan();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        var ketQua = MessageBox.Show(
+                            "Không kết nối được database:\n" +
+                            ex.Message +
+                            "\n\nBạn có muốn cấu hình lại không?",
+                            "Lỗi kết nối",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning);
+
+                        if (ketQua != DialogResult.Yes)
+                            return;
+
+                        using (var frm = new frmAppConfig())
+                        {
+                            if (frm.ShowDialog() != DialogResult.OK)
+                                return;
+                        }
+                    }
+                }
+
+                // Chưa có tài khoản thì khởi tạo Admin
+                if (!daCoTaiKhoan)
                 {
                     using (var form = new frmKhoiTaoAdmin())
                     {
-                        // Nếu người dùng thoát hoặc đóng Form thì dừng ứng dụng
                         if (form.ShowDialog() != DialogResult.OK)
-                        {
                             return;
-                        }
                     }
                 }
 

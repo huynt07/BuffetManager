@@ -82,6 +82,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmAppConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAppConfig.Designer.cs">
+      <DependentUpon>frmAppConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,9 @@
     <Compile Include="Services\TonKhoService.cs" />
     <Compile Include="Services\XuLyPhieuService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Forms\frmAppConfig.resx">
+      <DependentUpon>frmAppConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBan.resx">
       <DependentUpon>frmBan.cs</DependentUpon>
     </EmbeddedResource>

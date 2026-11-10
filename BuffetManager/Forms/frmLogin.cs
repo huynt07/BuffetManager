@@ -153,5 +153,13 @@ namespace BuffetManager.Forms
                 txtMatKhau.IconRight = Properties.Resources.eye_off;
             }
         }
+
+        private void btnCauHinh_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmAppConfig())
+            {
+                frm.ShowDialog(this);
+            }
+        }
     }
 }

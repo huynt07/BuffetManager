@@ -36,6 +36,7 @@
             this.txtMatKhau = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnDangNhap = new Guna.UI2.WinForms.Guna2Button();
             this.btnThoat = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCauHinh = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // lblTieuDe
@@ -154,6 +155,21 @@
             this.btnThoat.Text = "Thoát";
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // btnCauHinh
+            // 
+            this.btnCauHinh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCauHinh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCauHinh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCauHinh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCauHinh.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnCauHinh.ForeColor = System.Drawing.Color.White;
+            this.btnCauHinh.Location = new System.Drawing.Point(0, 0);
+            this.btnCauHinh.Name = "btnCauHinh";
+            this.btnCauHinh.Size = new System.Drawing.Size(137, 45);
+            this.btnCauHinh.TabIndex = 4;
+            this.btnCauHinh.Text = "Cấu hình";
+            this.btnCauHinh.Click += new System.EventHandler(this.btnCauHinh_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
@@ -162,6 +178,7 @@
             this.BackgroundImage = global::BuffetManager.Properties.Resources.nen_xanh;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(882, 533);
+            this.Controls.Add(this.btnCauHinh);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.txtMatKhau);
@@ -191,5 +208,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtMatKhau;
         private Guna.UI2.WinForms.Guna2Button btnDangNhap;
         private Guna.UI2.WinForms.Guna2Button btnThoat;
+        private Guna.UI2.WinForms.Guna2Button btnCauHinh;
     }
 }
